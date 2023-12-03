@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoToDay | To-do app</title>
+<link rel="stylesheet" href="dist/output.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+    *:focus {
+    outline: none;
+    }
+    li:nth-child(odd) {
+        background-color: rgb(231, 231, 231);
+    }
+    li:nth-child(even) {
+        background-color: rgb(243, 244, 246);
+    }
+    li {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    @media screen and (min-width: 768px){
+        li {
+        padding-right: 4rem;
+    }
+}
+</style>
+</head>
+<body class="w-full bg-blue-400 overflow-y">
+    <div class="wrapper bg-gray-100 h-auto mt-12 mx-auto w-2/3 h-96 py-10 rounded-2xl shadow-md" style="max-width: 750px;">
+        <h1 class="font-medium text:xl md:text-2xl px-12 text-center mt-16">What do you need to get done today?</h1>
+
+        <!-- Taskfield -->
+        <div class="taskfield flex justify-center gap-4 my-16 flex-wrap px-8">
+
+            <!-- Input for add task -->
+            <div class="task-input relative rounded-md shadow-md w-full max-w-md flex-col md:flex-row">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                <span class="text-gray-500 sm:text-sm"><i class="fa fa-check" aria-hidden="true"></i></span>
+                </div>
+                <input type="text" name="input-field" id="input-field" class="block w-full rounded-md border-0 py-1.5 pl-10 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm sm:leading-6" placeholder="Add a new task">
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="flex-col md:flex-row px-4 py-2 md:py-0 text-sm font-semibold text-white button-add rounded-md bg-indigo-600 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add</button>
+        </div>
+
+        <!-- Task list -->
+        <div class="task-list w-full mx-auto">
+            <ul class="flex flex-col">
+
+            </ul>
+        </div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
