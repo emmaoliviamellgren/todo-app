@@ -49,8 +49,6 @@ const getTasks = async() => {
 
                 newTodoItem.addEventListener('mouseover', showTrashCan);
                 newTodoItem.addEventListener('mouseout', hideTrashCan);
-                // trashCan.addEventListener('click', deleteTask); // Delete task on click by calling deleteTask function
-    console.log(taskList)
             })
 }
     catch(err) {
@@ -63,10 +61,9 @@ getTasks();
 
 // Making a POST request
 const addTask = async() => {
-    try {
         const res = await fetch('https://js1-todo-api.vercel.app/api/todos?apikey=5a91669d-78df-43e2-8558-702a1e63af19', {
             method: 'POST',
-            headers: { // Tells the database what type of data we're sending (json)
+            headers: {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
@@ -74,32 +71,19 @@ const addTask = async() => {
             })
         })
 
-        if(res.status !== 200) { // ERROR HANDLING: Checks if response status is successfull
-            throw new Error('Something went wrong when adding task, status: ' + res.status);
+        const errorActive = hasError(inputField);
+        if(errorActive === true) {
+            console.log('Something went wrong when adding task, status: ' + res.status);
         }
         const data = await res.json()
-        console.log(data);
         tasks.push(data);
-    }
-    catch(err) {
-        console.log(err)
-    }
 }
 
 // Add task to database by calling addTask()
 btnAdd.addEventListener('click', async(event) => {
     event.preventDefault()
-// const newTodoItem = document.createElement('li');
-// newTodoItem.classList.add('md:text-base', 'md:pl-32', 'pl-12', 'text-sm', 'font-medium');
-// newTodoItem.innerText = inputField.title;
-// taskList.appendChild(newTodoItem);
-await addTask();
-// const showTrashCan = () => {
-//     newTodoItem.appendChild(trashCan);
-//     trashCan.style.display= 'inline-block';
-// }
-// showTrashCan()
-getTasks();
+    await addTask();
+    getTasks();
 });
 
 
