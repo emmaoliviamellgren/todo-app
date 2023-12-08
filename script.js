@@ -80,7 +80,7 @@ const addTask = async() => {
 }
 
 // Add task to database by calling addTask()
-btnAdd.addEventListener('click', async(event) => {
+inputField.addEventListener('submit', async(event) => {
     event.preventDefault()
     await addTask();
     getTasks();
@@ -108,9 +108,8 @@ const deleteTask = async(id) => {
     getTasks()
 }
 
-
 // Add-button click events
-btnAdd.addEventListener('click', () => {
+inputField.addEventListener('submit', () => {
     let newTodoItem = document.createElement('li')
     newTodoItem.classList.add('md:text-base', 'md:pl-32', 'pl-12', 'text-sm', 'font-medium');
     newTodoItem.innerText = inputField.value;
